@@ -1,5 +1,5 @@
-export type User = {
-  id: number;
+export type BaseUser = {
+  id?: string;
   name: string;
   email: string;
   password: string;
