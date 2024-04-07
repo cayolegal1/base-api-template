@@ -6,7 +6,7 @@ export const i18nHandler = (
   _res: Response,
   next: NextFunction,
 ) => {
-  const lang = (req.headers["lang"] as string) || "es";
-  i18n.setLocale(lang);
+  const lang = (req.headers["lang"] as string);
+  if (lang) i18n.setLocale(lang);
   next();
 };
