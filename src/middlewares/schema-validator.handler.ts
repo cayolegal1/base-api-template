@@ -12,7 +12,7 @@ export const modelValidator = <T = unknown>(
   ) => {
     try {
       const data = request[property];
-      await schema.validate(data);
+      await schema.validate(data, { abortEarly: false });
       next();
     } catch (error) {
       next(error);
@@ -37,7 +37,7 @@ export const fieldValidator = <T = unknown>(
         [field]: data[field],
       };
 
-      await schema.validateAt(field as string, testedValue);
+      await schema.validateAt(field as string, testedValue, { abortEarly: false });
       next();
     } catch (error) {
       next(error);

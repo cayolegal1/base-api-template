@@ -1,5 +1,6 @@
-import type { Request, Response, NextFunction } from "express";
 import { ValidationError } from "yup";
+import type { Request, Response, NextFunction } from "express";
+import type { ErrorResponse } from "@custom-types/index";
 
 export const modelErrorHandler = (
   error: Error,
@@ -8,12 +9,17 @@ export const modelErrorHandler = (
   next: NextFunction,
 ) => {
   if (error instanceof ValidationError) {
-    response.status(400).json({
+    const responseBody: ErrorResponse = {
       description: "Model validation error",
-      field_error: error.path,
-      message: error.message,
       stack: error.stack,
-    });
+    };
+    if (error.path) {
+      responseBody["field_error"] = error.path;
+      responseBody["message"] = error.message;
+    } else {
+      responseBody["errors"] = error.errors.join(", ");
+    }
+    response.status(400).json(responseBody);
   } else {
     next(error);
   }
