@@ -1,3 +1,3 @@
-export const requiredMessage = "Este campo es requerido";
-export const invalidEmailMessage = "El email debe ser válido";
-export const invalidIdMessage = "id no válido";
+export const requiredMessage = "required_message";
+export const invalidEmailMessage = "invalid_email_message";
+export const invalidIdMessage = "invalid_id_message";
