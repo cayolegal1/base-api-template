@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import { setupRoutes } from "./routes";
 import {
-  internacionalizationHandler,
+  i18nHandler,
   defaultErrorHandler,
   errorLogger,
   modelErrorHandler,
@@ -13,7 +13,7 @@ import { config, i18n } from "./config/index";
 const app = express();
 app.use(express.json());
 app.use(i18n.init);
-app.use(internacionalizationHandler);
+app.use(i18nHandler);
 app.use(cors());
 
 setupRoutes(app);
