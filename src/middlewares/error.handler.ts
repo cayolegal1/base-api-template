@@ -29,7 +29,7 @@ export const defaultErrorHandler = (
   _next: NextFunction,
 ) => {
   response.status(500).json({
-    message: error.message,
+    message: "Internal server error",
     stack: error.stack,
   });
 };
