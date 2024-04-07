@@ -10,8 +10,8 @@ router.get(
   modelValidator(getUserSchema, "params"),
   (req, res, next) => {
     try {
-      const params = req.params;
-      res.status(STATUS_CODE.OK).json(params);
+      const { id } = req.params;
+      res.status(STATUS_CODE.OK).json({ success: true, id });
     } catch (error) {
       next(error);
     }
@@ -24,7 +24,7 @@ router.post(
   (req, res, next) => {
     try {
       const body = req.body;
-      res.status(STATUS_CODE.OK).json(body);
+      res.status(STATUS_CODE.CREATED).json({ success: true, body });
     } catch (error) {
       next(error);
     }
@@ -39,14 +39,25 @@ router.patch(
   (req, res, next) => {
     try {
       const body = req.body;
-      res.status(STATUS_CODE.OK).json(body);
+      res.status(STATUS_CODE.OK).json({ success: true, body });
     } catch (error) {
       next(error);
     }
-  }
-)
+  },
+);
 
-
+router.delete(
+  "/delete/:id",
+  modelValidator(getUserSchema, "params"),
+  (req, res, next) => {
+    try {
+      const { id } = req.params;
+      res.status(STATUS_CODE.OK).json({ success: true, id });
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 
 export default router;
 
