@@ -11,12 +11,11 @@ export const modelErrorHandler = (
 ) => {
   if (error instanceof ValidationError) {
     const responseBody: ErrorResponse = {
-      description: "Model validation error",
+      message: "Model validation error",
       stack: error.stack,
-      message: error.message,
       errors: getErrors(error)
     };
-    
+
     response.status(400).json(responseBody);
   } else {
     next(error);
