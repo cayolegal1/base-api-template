@@ -3,11 +3,12 @@ import {
   requiredMessage,
   invalidEmailMessage,
   invalidIdMessage,
+  invalidNameMessage,
 } from "src/constants";
 
 export const userSchema = Yup.object().shape({
   id: Yup.string().nullable(),
-  name: Yup.string().required(requiredMessage).min(3, "El nombre debe ser válido"),
+  name: Yup.string().required(requiredMessage).min(3, invalidNameMessage),
   email: Yup.string().email(invalidEmailMessage).required(requiredMessage),
   password: Yup.string().required(requiredMessage),
 });
