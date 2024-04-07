@@ -8,7 +8,8 @@ import {
   modelErrorHandler,
 } from "./middlewares";
 import { onAppListen } from "./helpers";
-import { config, i18n } from "./config/index";
+import { i18n } from "./i18n";
+import { config } from "./config";
 
 const app = express();
 app.use(express.json());

@@ -1,5 +1,5 @@
 import { ValidationError } from "yup";
-import { i18n } from "src/config";
+import { i18n } from "src/i18n";
 
 export const getErrors = (error: ValidationError) => {
   const responseErrors: Record<string, string> = {};
