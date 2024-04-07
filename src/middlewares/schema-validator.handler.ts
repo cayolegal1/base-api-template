@@ -6,12 +6,12 @@ export const modelValidator = <T = unknown>(
   property: keyof Request<T>,
 ) => {
   return async (
-    request: Request<T>,
+    req: Request<T>,
     _response: Response,
     next: NextFunction,
   ) => {
     try {
-      const data = request[property];
+      const data = req[property];
       await schema.validate(data, { abortEarly: false });
       next();
     } catch (error) {
@@ -27,12 +27,12 @@ export const fieldValidator = <T = unknown>(
   field: keyof T,
 ) => {
   return async (
-    request: Request<T>,
+    req: Request<T>,
     _response: Response,
     next: NextFunction,
   ) => {
     try {
-      const data = request[property];
+      const data = req[property];
       const testedValue = {
         [field]: data[field],
       };

@@ -1,22 +1,22 @@
 import { ValidationError } from "yup";
 import { getErrors } from "@helpers/error-helpers";
+import { STATUS_CODE } from "src/constants";
 import type { Request, Response, NextFunction } from "express";
 import type { ErrorResponse } from "@custom-types/index";
 
 export const modelErrorHandler = (
   error: Error,
-  request: Request,
-  response: Response,
+  req: Request,
+  res: Response,
   next: NextFunction,
 ) => {
   if (error instanceof ValidationError) {
-    const responseBody: ErrorResponse = {
+    const response: ErrorResponse = {
       message: "Model validation error",
       stack: error.stack,
       errors: getErrors(error)
     };
-
-    response.status(400).json(responseBody);
+    res.status(STATUS_CODE.BAD_REQUEST).json(response);
   } else {
     next(error);
   }
@@ -24,29 +24,27 @@ export const modelErrorHandler = (
 
 export const defaultErrorHandler = (
   error: Error,
-  request: Request,
-  response: Response,
+  req: Request,
+  res: Response,
   _next: NextFunction,
 ) => {
-  response.status(500).json({
-    message: "Internal server error",
-    stack: error.stack,
-  });
+  const response: ErrorResponse = { message: "Internal server error", stack: error.stack };
+  res.status(STATUS_CODE.SERVER_ERROR).json(response);
 };
 
 export const errorLogger = (
   error: Error,
-  request: Request,
-  response: Response,
+  req: Request,
+  res: Response,
   next: NextFunction,
 ) => {
   console.error({ error });
   console.error({
-    request: {
-      body: { ...request.body },
-      params: { ...request.params },
-      headers: { ...request.headers },
-      url: request.url,
+    req: {
+      body: { ...req.body },
+      params: { ...req.params },
+      headers: { ...req.headers },
+      url: req.url,
     },
   });
 
