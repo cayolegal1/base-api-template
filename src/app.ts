@@ -1,7 +1,11 @@
 import cors from "cors";
 import express from "express";
 import { setupRoutes } from "./routes";
-import { errorHandler, errorLogger, modelErrorHandler } from "./middlewares";
+import {
+  defaultErrorHandler,
+  errorLogger,
+  modelErrorHandler,
+} from "./middlewares";
 import { onAppListen } from "./helpers";
 import { config } from "./config";
 
@@ -13,6 +17,6 @@ setupRoutes(app);
 
 app.use(errorLogger);
 app.use(modelErrorHandler);
-app.use(errorHandler);
+app.use(defaultErrorHandler);
 
 app.listen(config.PORT, () => onAppListen(config.PORT));

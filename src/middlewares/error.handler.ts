@@ -22,7 +22,7 @@ export const modelErrorHandler = (
   }
 };
 
-export const errorHandler = (
+export const defaultErrorHandler = (
   error: Error,
   request: Request,
   response: Response,
