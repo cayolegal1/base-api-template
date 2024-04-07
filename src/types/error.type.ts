@@ -3,5 +3,5 @@ export type ErrorResponse = {
   stack: string;
   field_error?: string;
   message?: string;
-  errors?: string
+  errors?: Record<string, string> | string;
 }

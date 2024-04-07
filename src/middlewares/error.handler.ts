@@ -1,4 +1,5 @@
 import { ValidationError } from "yup";
+import { getErrors } from "@helpers/error-helpers";
 import type { Request, Response, NextFunction } from "express";
 import type { ErrorResponse } from "@custom-types/index";
 
@@ -17,7 +18,7 @@ export const modelErrorHandler = (
       responseBody["field_error"] = error.path;
       responseBody["message"] = error.message;
     } else {
-      responseBody["errors"] = error.errors.join(", ");
+      responseBody["errors"] = getErrors(error.errors)
     }
     response.status(400).json(responseBody);
   } else {
