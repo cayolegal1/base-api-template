@@ -1,8 +1,8 @@
 import cors from "cors";
 import express from "express";
-import i18nextMiddleware from'i18next-http-middleware';
 import { setupRoutes } from "./routes";
 import {
+  internacionalizationHandler,
   defaultErrorHandler,
   errorLogger,
   modelErrorHandler,
@@ -12,7 +12,8 @@ import { config, i18n } from "./config/index";
 
 const app = express();
 app.use(express.json());
-app.use(i18nextMiddleware.handle(i18n, {}));
+app.use(i18n.init);
+app.use(internacionalizationHandler);
 app.use(cors());
 
 setupRoutes(app);

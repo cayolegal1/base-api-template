@@ -4,9 +4,7 @@ import { i18n } from "src/config";
 export const getErrors = (error: ValidationError) => {
   const responseErrors: Record<string, string> = {};
   for (const err of error.inner) {
-    const message = i18n.t(err.message);
-    console.log({message});
-    console.log({locale: i18n.language})
+    const message = i18n.__(err.message);
     responseErrors[err.path] = message;
   }
 

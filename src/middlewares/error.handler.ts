@@ -1,6 +1,7 @@
 import { ValidationError } from "yup";
 import { getErrors } from "@helpers/error-helpers";
 import { STATUS_CODE } from "src/constants";
+import { i18n } from "src/config";
 import type { Request, Response, NextFunction } from "express";
 import type { ErrorResponse } from "@custom-types/index";
 
@@ -12,7 +13,7 @@ export const modelErrorHandler = (
 ) => {
   if (error instanceof ValidationError) {
     const response: ErrorResponse = {
-      message: "Model validation error",
+      message: i18n.__("model_validation_error"),
       stack: error.stack,
       errors: getErrors(error)
     };

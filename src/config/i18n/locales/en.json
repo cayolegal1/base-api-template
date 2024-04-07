@@ -1,0 +1,7 @@
+{
+  "required_message": "This field is required",
+  "invalid_email_message": "The email must be valid",
+  "invalid_id_message": "Invalid id",
+  "model_validation_error": "Model validation error"
+}
+  
