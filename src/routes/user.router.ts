@@ -1,5 +1,5 @@
 import express from "express";
-import { schemaValidator } from "@middlewares/index";
+import { modelValidator } from "@middlewares/index";
 import { userSchema } from "@schemas/index";
 
 const router = express.Router();
@@ -10,15 +10,13 @@ router.get("/:id", (request, response) => {
 
 router.post(
   "/create",
-  schemaValidator(userSchema, "body"),
-  (request, response) => {
+  modelValidator(userSchema, "body"),
+  (request, response, next) => {
     try {
       const body = request.body;
-      response.json(body);
+      response.status(200).json(body);
     } catch (error) {
-      response.status(400).send({
-        message: error.message,
-      });
+      next(error);
     }
   },
 );
