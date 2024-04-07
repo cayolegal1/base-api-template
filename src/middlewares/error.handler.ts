@@ -18,7 +18,7 @@ export const modelErrorHandler = (
       responseBody["field_error"] = error.path;
       responseBody["message"] = error.message;
     } else {
-      responseBody["errors"] = getErrors(error.errors)
+      responseBody["errors"] = getErrors(error)
     }
     response.status(400).json(responseBody);
   } else {
