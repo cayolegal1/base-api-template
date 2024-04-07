@@ -19,3 +19,28 @@ export const modelValidator = <T = unknown>(
     }
   };
 };
+
+
+export const fieldValidator = <T = unknown>(
+  schema: ObjectSchema<T>,
+  property: keyof Request<T>,
+  field: keyof T,
+) => {
+  return async (
+    request: Request<T>,
+    _response: Response,
+    next: NextFunction,
+  ) => {
+    try {
+      const data = request[property];
+      const testedValue = {
+        [field]: data[field],
+      };
+
+      await schema.validateAt(field as string, testedValue);
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
+};

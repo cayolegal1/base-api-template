@@ -1,12 +1,21 @@
 import express from "express";
-import { modelValidator } from "@middlewares/index";
+import { modelValidator, fieldValidator } from "@middlewares/index";
 import { userSchema } from "@schemas/index";
 
 const router = express.Router();
 
-router.get("/:id", (request, response) => {
-  response.send(request.params.id)
-});
+router.get(
+  "/:email",
+  fieldValidator(userSchema, "params", "email"),
+  (request, response, next) => {
+    try {
+      const params = request.params;
+      response.status(200).json(params);
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 
 router.post(
   "/create",
