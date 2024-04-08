@@ -1,5 +1,5 @@
 import express from "express";
-import { modelValidator } from "@middlewares/index";
+import { schemaValidator } from "@middlewares/index";
 import { userSchema, getUserSchema } from "@schemas/index";
 import { STATUS_CODE } from "src/constants";
 
@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get(
   "/:id",
-  modelValidator(getUserSchema, "params"),
+  schemaValidator(getUserSchema, "params"),
   (req, res, next) => {
     try {
       const { id } = req.params;
@@ -20,7 +20,7 @@ router.get(
 
 router.post(
   "/create",
-  modelValidator(userSchema, "body"),
+  schemaValidator(userSchema, "body"),
   (req, res, next) => {
     try {
       const body = req.body;
@@ -34,8 +34,8 @@ router.post(
 
 router.patch(
   "/update/:id",
-  modelValidator(getUserSchema, "params"),
-  modelValidator(userSchema, "body"),
+  schemaValidator(getUserSchema, "params"),
+  schemaValidator(userSchema, "body"),
   (req, res, next) => {
     try {
       const body = req.body;
@@ -48,7 +48,7 @@ router.patch(
 
 router.delete(
   "/delete/:id",
-  modelValidator(getUserSchema, "params"),
+  schemaValidator(getUserSchema, "params"),
   (req, res, next) => {
     try {
       const { id } = req.params;
