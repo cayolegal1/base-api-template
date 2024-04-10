@@ -1,6 +1,6 @@
 import type { Repository, EntityId } from "src/interfaces";
 
-export class BaseRepository<T> implements Repository<T> {
+export abstract class BaseRepository<T> implements Repository<T> {
   model: T;
 
   constructor(model: T) {
