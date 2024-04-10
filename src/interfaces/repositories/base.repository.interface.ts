@@ -1,7 +1,7 @@
 export type EntityId = string | number;
 
 export interface Repository<T> {
-  model: T;
+  // model: T;
   getAll: () => Promise<T[]>;
   getById: (id: EntityId) => Promise<T>;
   create: (data: T) => Promise<void>;
