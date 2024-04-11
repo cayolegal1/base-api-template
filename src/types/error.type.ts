@@ -7,6 +7,7 @@ export type ErrorResponse = {
 };
 
 export type ErrorConstructor = {
+  isInternational?: boolean;
   message: string;
   name: string;
   stack?: string;

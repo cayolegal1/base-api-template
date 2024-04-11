@@ -7,6 +7,7 @@ export class UnauthorizedError extends BaseError {
       message: "You are not authorized for this resource",
       name: "Unauthorized",
       statusCode: STATUS_CODE.UNAUTHORIZED,
+      isInternational: true,
     });
   }
 }
