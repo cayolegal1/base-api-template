@@ -8,7 +8,7 @@ router.post(
   passport.authenticate("local", { session: false }),
   (req, res, next) => {
     try {
-      res.send("success");
+      res.send(req.user);
     } catch(error) {
       next(error);
     }
