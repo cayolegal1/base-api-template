@@ -1,6 +1,6 @@
 import { ValidationError } from "yup";
-import { BaseError } from "utils/errors";
-import { getErrors } from "utils/helpers/error-helpers";
+import { BaseError } from "src/utils/errors";
+import { getErrors } from "src/utils/helpers/error-helpers";
 import { STATUS_CODE, isDevelopment } from "src/constants";
 import { i18n } from "src/i18n";
 import type { Request, Response, NextFunction } from "express";

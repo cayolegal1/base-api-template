@@ -8,10 +8,10 @@ import {
   errorLogger,
   modelErrorHandler,
 } from "./middlewares";
-import { onAppListen } from "utils/helpers";
+import { onAppListen } from "src/utils/helpers";
 import { i18n } from "./i18n";
 import { config } from "./config";
-
+import "src/utils/auth/passport";
 const app = express();
 app.use(express.json());
 app.use(cors());
