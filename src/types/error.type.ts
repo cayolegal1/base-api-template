@@ -1,5 +1,14 @@
+import { STATUS_CODE } from "src/constants";
+
 export type ErrorResponse = {
-  stack: string;
-  message: string;
   errors?: Record<string, string>;
-}
+  message: string;
+  stack: string;
+};
+
+export type ErrorConstructor = {
+  message: string;
+  name: string;
+  stack?: string;
+  statusCode: typeof STATUS_CODE[keyof typeof STATUS_CODE];
+};
