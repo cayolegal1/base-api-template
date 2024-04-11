@@ -4,6 +4,7 @@
   "invalid_id_message": "Invalid id",
   "model_validation_error": "Model validation error",
   "invalid_name_message": "Name must be valid",
-  "unauthorized_message": "You are not authorized for this resource"
+  "unauthorized_message": "You are not authorized for this resource",
+  "invalid_credentials": "Invalid credentials"
 }
   

@@ -4,5 +4,6 @@
 	"invalid_id_message": "ID no válido",
 	"model_validation_error": "Error de validación modelo",
 	"invalid_name_message": "El nombre debe ser válido",
-	"unauthorized_message": "No estas autorizado para este recurso"
+	"unauthorized_message": "No estas autorizado para este recurso",
+	"invalid_credentials": "Credenciales inválidas"
 }
