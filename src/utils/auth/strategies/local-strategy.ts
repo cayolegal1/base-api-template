@@ -1,6 +1,6 @@
 import { Strategy } from "passport-local";
 import { globalMessage } from "src/i18n";
-import { UnauthorizedError } from "src/utils/errors";
+import { CustomError } from "src/utils/errors";
 
 export const localStrategy = new Strategy(
   {
@@ -10,8 +10,9 @@ export const localStrategy = new Strategy(
   (email, password, done) => {
     try {
       if (!email || !password || password !== "hola") {
-        throw new UnauthorizedError({
+        throw new CustomError({
           message: globalMessage.invalid_credentials,
+          name: "Unauthorized Error",
           hasI18nSupport: true,
         });
       }

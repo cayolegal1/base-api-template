@@ -1,8 +1,9 @@
 import type { ErrorConstructor } from "@custom-types/error.type";
 
-export abstract class BaseError extends Error {
-  hasI18nSupport: boolean;
+export class CustomError extends Error {
+  name: string;
   statusCode: number;
+  hasI18nSupport: boolean;
   constructor({ message, statusCode = 500, name, hasI18nSupport = false }: ErrorConstructor) {
     super(message);
     Object.assign(this, { name, statusCode, hasI18nSupport });

@@ -1,5 +1,5 @@
 import { ValidationError } from "yup";
-import { BaseError } from "src/utils/errors";
+import { CustomError } from "src/utils/errors";
 import { getErrors } from "src/utils/helpers/error-helpers";
 import { STATUS_CODE, isDevelopment } from "src/utils/constants";
 import { i18n } from "src/i18n";
@@ -30,7 +30,7 @@ export const customErrorHandler = (
   res: Response,
   next: NextFunction,
 ) => {
-  if (error instanceof BaseError) {
+  if (error instanceof CustomError) {
     const response: ErrorResponse = {
       message: error.hasI18nSupport ? i18n.__(error.message) : error.message,
       stack: isDevelopment ? error.stack : undefined,
