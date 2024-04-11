@@ -1,7 +1,7 @@
 import express from "express";
 import { schemaValidator } from "@middlewares/index";
 import { userSchema, getUserSchema } from "@schemas/index";
-import { STATUS_CODE } from "src/constants";
+import { STATUS_CODE } from "src/utils/constants";
 
 const router = express.Router();
 

@@ -4,7 +4,7 @@ import {
   invalidEmailMessage,
   invalidIdMessage,
   invalidNameMessage,
-} from "src/constants";
+} from "src/utils/constants";
 
 export const userSchema = Yup.object().shape({
   id: Yup.string().nullable(),

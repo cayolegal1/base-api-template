@@ -1,5 +1,5 @@
 import { BaseError } from "./BaseError";
-import { STATUS_CODE } from "src/constants";
+import { STATUS_CODE } from "src/utils/constants";
 import type { ErrorConstructor } from "@custom-types/error.type";
 
 export class UnauthorizedError extends BaseError {
