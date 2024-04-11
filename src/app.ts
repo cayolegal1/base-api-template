@@ -3,6 +3,7 @@ import express from "express";
 import { setupRoutes } from "./routes";
 import {
   i18nHandler,
+  customErrorHandler,
   defaultErrorHandler,
   errorLogger,
   modelErrorHandler,
@@ -21,6 +22,7 @@ setupRoutes(app);
 
 app.use(errorLogger);
 app.use(modelErrorHandler);
+app.use(customErrorHandler);
 app.use(defaultErrorHandler);
 
 app.listen(config.PORT, () => onAppListen(config.PORT));

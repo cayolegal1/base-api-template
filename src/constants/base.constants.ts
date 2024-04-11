@@ -6,3 +6,5 @@ export const STATUS_CODE = {
   FORBIDDEN: 403,
   SERVER_ERROR: 500,
 };
+
+export const isDevelopment = process.env.NODE_ENV !== "production";

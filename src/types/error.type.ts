@@ -1,13 +1,13 @@
 export type ErrorResponse = {
   errors?: Record<string, string>;
   message: string;
-  stack: string;
+  stack?: string;
 };
 
 export type ErrorConstructor = {
-  isInternational?: boolean;
-  message: string;
-  name: string;
+  hasI18nSupport?: boolean;
+  message?: string;
+  name?: string;
   stack?: string;
-  statusCode: number;
+  statusCode?: number;
 };

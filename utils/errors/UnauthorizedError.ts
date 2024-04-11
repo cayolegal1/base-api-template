@@ -1,13 +1,14 @@
-import { STATUS_CODE } from "src/constants";
 import { BaseError } from "./BaseError";
+import { STATUS_CODE } from "src/constants";
+import type { ErrorConstructor } from "@custom-types/error.type";
 
 export class UnauthorizedError extends BaseError {
-  constructor() {
+  constructor({ message, hasI18nSupport }: ErrorConstructor = {}) {
     super({
-      message: "You are not authorized for this resource",
+      message: message || "You are not authorized for this resource",
       name: "Unauthorized",
       statusCode: STATUS_CODE.UNAUTHORIZED,
-      isInternational: true,
+      hasI18nSupport,
     });
   }
 }

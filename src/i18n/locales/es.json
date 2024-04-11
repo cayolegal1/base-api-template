@@ -3,5 +3,6 @@
 	"invalid_email_message": "El correo electrónico debe ser válido",
 	"invalid_id_message": "ID no válido",
 	"model_validation_error": "Error de validación modelo",
-	"invalid_name_message": "El nombre debe ser válido"
+	"invalid_name_message": "El nombre debe ser válido",
+	"unauthorized_message": "No estas autorizado para este recurso"
 }
