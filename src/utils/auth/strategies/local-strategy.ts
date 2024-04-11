@@ -2,7 +2,7 @@ import { Strategy } from "passport-local";
 import { globalMessage } from "src/i18n";
 import { CustomError } from "src/utils/errors";
 
-export const localStrategy = new Strategy(
+export const LocalStrategy = new Strategy(
   {
     usernameField: "email",
     passwordField: "password",
