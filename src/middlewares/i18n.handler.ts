@@ -7,6 +7,6 @@ export const i18nHandler = (
   next: NextFunction,
 ) => {
   const lang = (req.headers["lang"] as string);
-  if (lang) i18n.setLocale(lang);
+  if (lang !== i18n.getLocale()) i18n.setLocale(lang);
   next();
 };
