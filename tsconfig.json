@@ -115,6 +115,7 @@
   "exclude": ["node_modules"],
   "ts-node": {
     "require": ["tsconfig-paths/register"],
-    "noEmitOnError": false,                  
+    "noEmitOnError": false,
+    // "esm": true                
   }
 }

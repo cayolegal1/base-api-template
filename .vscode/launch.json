@@ -7,15 +7,12 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "restart": false,
-            "program": "${workspaceFolder}/src/app.ts",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
-        }
+            "name": "Debugger",
+            "args": ["${workspaceFolder}/src/app.ts"],
+            "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+            "sourceMaps": true,
+            "cwd": "${workspaceRoot}/src",
+            "console": "externalTerminal"
+       }
     ]
 }
