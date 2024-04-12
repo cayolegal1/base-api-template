@@ -15,4 +15,21 @@ router.post(
   }
 );
 
+router.get(
+  "/test",
+  (req, res, next) => {
+    try {
+      res.setHeader("Content-Type", "text/html");
+      res.write("<html>");
+      res.write("<body>");
+      res.write("<h1>Hola!</h1>");
+      res.write("</body>");
+      res.write("</html>");
+      res.end();
+    } catch(error) {
+      next(error);
+    }
+  }
+);
+
 export default router;
