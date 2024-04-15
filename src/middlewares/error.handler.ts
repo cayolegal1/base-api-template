@@ -2,7 +2,6 @@ import { ValidationError } from "yup";
 import { CustomError } from "src/utils/errors";
 import { getErrors } from "src/utils/helpers/error-helpers";
 import { STATUS_CODE, isDevelopment } from "src/utils/constants";
-import { i18n } from "src/i18n";
 import type { Request, Response, NextFunction } from "express";
 import type { ErrorResponse } from "@custom-types/index";
 
@@ -14,7 +13,7 @@ export const modelErrorHandler = (
 ) => {
   if (error instanceof ValidationError) {
     const response: ErrorResponse = {
-      message: i18n.__("model_validation_error"),
+      message: "Model validation error",
       stack: error.stack,
       errors: getErrors(error),
     };
@@ -32,7 +31,7 @@ export const customErrorHandler = (
 ) => {
   if (error instanceof CustomError) {
     const response: ErrorResponse = {
-      message: error.hasI18nSupport ? i18n.__(error.message) : error.message,
+      message: error.message,
       stack: isDevelopment ? error.stack : undefined,
     };
 

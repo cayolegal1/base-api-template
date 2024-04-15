@@ -1,11 +1,9 @@
-import { ValidationError } from "yup";
-import { i18n } from "src/i18n";
+import type { ValidationError } from "yup";
 
 export const getErrors = (error: ValidationError) => {
   const responseErrors: Record<string, string> = {};
   for (const err of error.inner) {
-    const message = i18n.__(err.message);
-    responseErrors[err.path] = message;
+    responseErrors[err.path] = err.message;
   }
 
   return responseErrors;
