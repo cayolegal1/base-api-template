@@ -8,4 +8,3 @@ export const STATUS_CODE = {
 };
 
 export const isDevelopment = process.env.NODE_ENV !== "production";
-export const useTranslation = false;
