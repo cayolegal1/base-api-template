@@ -1,5 +1,7 @@
 import { Strategy } from "passport-local";
-import { CustomError } from "src/utils/errors";
+import { UnauthorizedError } from "src/utils/errors";
+
+const user = { name: "Jazmin", id: "400", role: "customer" };
 
 export const LocalStrategy = new Strategy(
   {
@@ -9,15 +11,10 @@ export const LocalStrategy = new Strategy(
   (email, password, done) => {
     try {
       if (!email || !password) {
-        throw new CustomError({
-          message: "Invalid credentials",
-          name: "Unauthorized Error",
-          statusCode: 401,
-        });
+        throw new UnauthorizedError({ message: "Invalid credentials" });
       }
 
-      const user = { name: "Jazmin", email: "jazmin@hotmail.com", id: "400", role: "customer" };
-      done(null, user);
+      done(null, { ...user, email });
     } catch (error) {
       done(error, null);
     }

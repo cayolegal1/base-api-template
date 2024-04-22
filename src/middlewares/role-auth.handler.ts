@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { CustomError } from "src/utils/errors";
+import { UnauthorizedError } from "src/utils/errors";
 import type { User, UserRole } from "src/types";
 
 export const checkRoleOrPermission = (...roles: UserRole[]) =>
@@ -17,7 +17,7 @@ export const checkRoleOrPermission = (...roles: UserRole[]) =>
         return next();
       }
       
-      throw new CustomError({ statusCode: 401, message: "Not authorized" });
+      throw new UnauthorizedError();
 
     } catch (error) {
       next(error);
