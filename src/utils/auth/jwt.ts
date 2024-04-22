@@ -11,7 +11,7 @@ export const createToken = ({
     
   if (!id || !role) throw new CustomError({ internalMessage: "JWT payload not complete" });
 
-  const token = jwt.sign({ sub: id }, config.SECRET_KEY, { expiresIn });
+  const token = jwt.sign({ sub: id, role }, config.SECRET_KEY, { expiresIn });
 
   return token;
 };
