@@ -9,4 +9,5 @@ export type ErrorConstructor = {
   name?: string;
   stack?: string;
   statusCode?: number;
+  internalMessage?: string;
 };

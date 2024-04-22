@@ -35,6 +35,10 @@ export const customErrorHandler = (
       stack: isDevelopment ? error.stack : undefined,
     };
 
+    if (error.internalMessage) {
+      console.error(error.internalMessage);
+    }
+
     res.status(error.statusCode).json(response);
   } else {
     next();
