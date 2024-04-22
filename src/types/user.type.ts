@@ -1,7 +1,16 @@
-export type UserRole = "admin" | "guest";
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+};
+
+export type UserRole = "admin" | "guest" | "customer";
+
+export type JwtDecodedUser = Pick<User, "id" | "role">;
 
 export type JwtPayload = {
-  id: number;
-  role: UserRole,
+  user: JwtDecodedUser;
   expiresIn?: string;
 };
+

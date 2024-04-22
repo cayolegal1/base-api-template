@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction, } from "express";
 import type { ObjectSchema } from "yup";
 
-export const schemaValidator = <T>(
+export const checkSchema = <T>(
   schema: ObjectSchema<T>,
   property: keyof Request<T>,
 ) => {

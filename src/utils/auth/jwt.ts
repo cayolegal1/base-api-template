@@ -4,14 +4,15 @@ import { CustomError } from "src/utils/errors";
 import type { JwtPayload } from "src/types";
 
 export const createToken = ({
-  id,
-  role,
+  user,
   expiresIn = "1d",
 }: JwtPayload): string => {
-    
-  if (!id || !role) throw new CustomError({ internalMessage: "JWT payload not complete" });
 
-  const token = jwt.sign({ sub: id, role }, config.SECRET_KEY, { expiresIn });
+  const { id, role } = user;
+
+  if (!id || !role) throw new CustomError({ internalMessage: "JWT payload not completed" });
+
+  const token = jwt.sign({ id, role }, config.SECRET_KEY, { expiresIn });
 
   return token;
 };

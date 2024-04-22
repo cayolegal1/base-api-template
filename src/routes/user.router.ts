@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import { schemaValidator } from "@middlewares/index";
+import { checkSchema, checkRoleOrPermission } from "@middlewares/index";
 import { userSchema, getUserSchema } from "@schemas/index";
 import { STATUS_CODE } from "src/utils/constants";
 
@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get(
   "/:id",
-  schemaValidator(getUserSchema, "params"),
+  checkSchema(getUserSchema, "params"),
   (req, res, next) => {
     try {
       const { id } = req.params;
@@ -21,7 +21,7 @@ router.get(
 
 router.post(
   "/create",
-  schemaValidator(userSchema, "body"),
+  checkSchema(userSchema, "body"),
   (req, res, next) => {
     try {
       const body = req.body;
@@ -36,14 +36,15 @@ router.post(
 router.patch(
   "/update/:id",
   passport.authenticate("jwt", { session: false }),
-  schemaValidator(getUserSchema, "params"),
-  schemaValidator(userSchema, "body"),
+  checkRoleOrPermission("admin"),
+  checkSchema(getUserSchema, "params"),
+  checkSchema(userSchema, "body"),
   (req, res, next) => {
     try {
       const body = req.body;
       res.status(STATUS_CODE.OK).json({ success: true, body });
     } catch (error) {
-      next(error);
+      next(error)
     }
   },
 );
@@ -51,7 +52,8 @@ router.patch(
 router.delete(
   "/delete/:id",
   passport.authenticate("jwt", { session: false }),
-  schemaValidator(getUserSchema, "params"),
+  checkRoleOrPermission("admin"),
+  checkSchema(getUserSchema, "params"),
   (req, res, next) => {
     try {
       const { id } = req.params;

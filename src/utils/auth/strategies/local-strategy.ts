@@ -16,7 +16,7 @@ export const LocalStrategy = new Strategy(
         });
       }
 
-      const user = { name: "Jazmin", email: "jazmin@hotmail.com" };
+      const user = { name: "Jazmin", email: "jazmin@hotmail.com", id: "400", role: "customer" };
       done(null, user);
     } catch (error) {
       done(error, null);
