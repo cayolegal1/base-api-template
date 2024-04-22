@@ -1,7 +1,7 @@
 export type UserRole = "admin" | "guest";
 
 export type JwtPayload = {
-  id: string;
+  id: number;
   role: UserRole,
   expiresIn?: string;
 };

@@ -1,4 +1,5 @@
 import express from "express";
+import passport from "passport";
 import { schemaValidator } from "@middlewares/index";
 import { userSchema, getUserSchema } from "@schemas/index";
 import { STATUS_CODE } from "src/utils/constants";
@@ -34,6 +35,7 @@ router.post(
 
 router.patch(
   "/update/:id",
+  passport.authenticate("jwt", { session: false }),
   schemaValidator(getUserSchema, "params"),
   schemaValidator(userSchema, "body"),
   (req, res, next) => {
@@ -48,6 +50,7 @@ router.patch(
 
 router.delete(
   "/delete/:id",
+  passport.authenticate("jwt", { session: false }),
   schemaValidator(getUserSchema, "params"),
   (req, res, next) => {
     try {

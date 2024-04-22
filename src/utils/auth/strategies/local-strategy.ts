@@ -12,6 +12,7 @@ export const LocalStrategy = new Strategy(
         throw new CustomError({
           message: "Invalid credentials",
           name: "Unauthorized Error",
+          statusCode: 401,
         });
       }
 
