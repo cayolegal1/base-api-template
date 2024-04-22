@@ -5,6 +5,5 @@ export const JWTStrategy = new Strategy({
   secretOrKey: config.SECRET_KEY,
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 }, (payload, done) => {
-  console.log({payload});
   return done(null, payload);
 });
