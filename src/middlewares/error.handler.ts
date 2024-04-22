@@ -72,6 +72,9 @@ export const errorLogger = (
       params: { ...req.params },
       headers: { ...req.headers },
       url: req.url,
+      cookies: {
+        ...req.cookies
+      }
     },
   });
 
